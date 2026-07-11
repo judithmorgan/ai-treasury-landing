@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Treasury — Smarter Cash Management, Powered by AI</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f7f9fc;
+    --text: #14181f;
+    --text-muted: #5b6472;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --border: #e5e9f0;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Nav */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links a.link {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .nav-links a.link:hover { color: var(--text); }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-nav {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-outline:hover {
+    background: var(--bg-alt);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 110px 0 100px;
+    text-align: center;
+    background:
+      radial-gradient(600px 300px at 50% -10%, rgba(37,99,235,0.10), transparent 70%),
+      var(--bg);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(37, 99, 235, 0.08);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    max-width: 780px;
+    margin: 0 auto 20px;
+  }
+
+  .accent-text { color: var(--accent); }
+
+  .subhead {
+    font-size: 19px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* Section headings */
+  .section {
+    padding: 90px 0;
+  }
+
+  .section-alt {
+    background: var(--bg-alt);
+  }
+
+  .section-head {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 56px;
+  }
+
+  .section-head h2 {
+    font-size: 36px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+
+  .section-head p {
+    color: var(--text-muted);
+    font-size: 17px;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 12px 24px rgba(20, 24, 31, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  .feature-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .price-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .price-card.featured {
+    border: 2px solid var(--accent);
+    box-shadow: 0 16px 32px rgba(37, 99, 235, 0.14);
+    transform: scale(1.03);
+  }
+
+  .badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  .price-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .price-card .tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .price {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .price span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .price-card ul {
+    list-style: none;
+    margin: 24px 0 32px;
+    flex-grow: 1;
+  }
+
+  .price-card ul li {
+    font-size: 14.5px;
+    padding: 8px 0;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .price-card ul li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-card .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* CTA band */
+  .cta-band {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    color: #fff;
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  .cta-band h2 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .cta-band p {
+    color: rgba(255,255,255,0.85);
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  .cta-band .btn-primary {
+    background: #fff;
+    color: var(--accent-dark);
+  }
+  .cta-band .btn-primary:hover {
+    background: #f0f4ff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-row .logo { font-size: 16px; }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  .copyright {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  /* Mobile nav toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  #features, #pricing {
+    scroll-margin-top: 76px;
+  }
+
+  /* Get Started modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 24, 31, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 100;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: #fff;
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px 32px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(20, 24, 31, 0.25);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal h3 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .modal-body > p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    margin-bottom: 24px;
+  }
+
+  .form-field {
+    margin-bottom: 16px;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    font: inherit;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-alt);
+    color: var(--text);
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 72px;
+  }
+
+  #getStartedForm .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .form-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin: -8px 0 16px;
+    display: none;
+  }
+  .form-error.show { display: block; }
+
+  .modal-success {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--accent);
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .modal-success h3 { margin-bottom: 10px; }
+  .modal-success p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    margin-bottom: 24px;
+  }
+  .modal-success .btn { width: 100%; }
+
+  /* Chat widget */
+  .chat-launcher {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    transition: transform 0.15s ease, background 0.15s ease;
+    z-index: 90;
+  }
+  .chat-launcher:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+  }
+  .chat-launcher.hidden { display: none; }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    height: 560px;
+    max-height: calc(100vh - 48px);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 60px rgba(20, 24, 31, 0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 95;
+  }
+  .chat-panel.open { display: flex; }
+
+  .chat-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .chat-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .chat-header p {
+    font-size: 12.5px;
+    margin: 2px 0 0;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .chat-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.9;
+  }
+  .chat-close:hover { opacity: 1; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg-alt);
+  }
+
+  .chat-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14.5px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .chat-bubble.bot {
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-bubble.user {
+    background: var(--accent);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-bubble.error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  .chat-typing {
+    align-self: flex-start;
+    display: flex;
+    gap: 4px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.5;
+    animation: chat-blink 1.2s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes chat-blink {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  .chat-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .chat-input-row textarea {
+    flex: 1;
+    resize: none;
+    font: inherit;
+    font-size: 14.5px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    color: var(--text);
+    max-height: 96px;
+    min-height: 42px;
+  }
+  .chat-input-row textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .chat-send {
+    flex-shrink: 0;
+    align-self: flex-end;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    height: 42px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .chat-send:hover:not(:disabled) { background: var(--accent-dark); }
+  .chat-send:disabled { opacity: 0.5; cursor: default; }
+
+  @media (max-width: 640px) {
+    .chat-panel {
+      bottom: 0;
+      right: 0;
+      width: 100vw;
+      max-width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      border-radius: 0;
+    }
+    .chat-launcher { bottom: 16px; right: 16px; }
+  }
+
+  @media (max-width: 860px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .price-card.featured { transform: none; }
+    h1 { font-size: 40px; }
+    .section-head h2 { font-size: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links .link { display: none; }
+    .nav-links .btn-outline { display: none; }
+    .features-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 32px; }
+    .subhead { font-size: 17px; }
+    .hero { padding: 80px 0 64px; }
+    .section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">AI Treasury</div>
+      <div class="nav-links">
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#pricing">Pricing</a>
+        <button type="button" class="btn btn-outline btn-nav js-get-started">Get Started</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">AI-Powered Treasury Management</span>
+    <h1>Take control of your cash with <span class="accent-text">AI Treasury</span></h1>
+    <p class="subhead">Real-time visibility, automated forecasting, and smarter decisions — all in one platform built for modern finance teams.</p>
+    <div class="hero-cta">
+      <button type="button" class="btn btn-primary js-get-started">Get Started</button>
+    </div>
+    <p class="hero-note">No credit card required · Set up in minutes</p>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <h2>Everything you need, built in</h2>
+      <p>AI Treasury brings your cash, forecasts, and reconciliations into one clean, automated workflow.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">◎</div>
+        <h3>Real-Time Cash Visibility</h3>
+        <p>See balances across every account in one dashboard, updated continuously.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">▲</div>
+        <h3>AI-Driven Forecasting</h3>
+        <p>Predict cash flow gaps and surpluses weeks in advance with machine learning models.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⟲</div>
+        <h3>Automated Reconciliation</h3>
+        <p>Match transactions automatically and eliminate hours of manual spreadsheet work.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Bank-Grade Security</h3>
+        <p>Encrypted data, secure integrations, and full audit trails you can trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <h2>Simple, transparent pricing</h2>
+      <p>Choose the plan that fits your business. Upgrade anytime as you grow.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <p class="tagline">For small teams getting started</p>
+        <div class="price">$49<span>/month</span></div>
+        <ul>
+          <li>Up to 2 connected accounts</li>
+          <li>Real-time cash dashboard</li>
+          <li>Basic reporting</li>
+          <li>Email support</li>
+        </ul>
+        <button type="button" class="btn btn-outline js-get-started" data-plan="Starter">Get Started</button>
+      </div>
+      <div class="price-card featured">
+        <span class="badge">Most Popular</span>
+        <h3>Growth</h3>
+        <p class="tagline">For growing finance teams</p>
+        <div class="price">$149<span>/month</span></div>
+        <ul>
+          <li>Up to 10 connected accounts</li>
+          <li>AI-driven cash flow forecasting</li>
+          <li>Automated reconciliation</li>
+          <li>Priority support</li>
+          <li>Team collaboration tools</li>
+        </ul>
+        <button type="button" class="btn btn-primary js-get-started" data-plan="Growth">Get Started</button>
+      </div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <p class="tagline">For larger organizations</p>
+        <div class="price">Custom</div>
+        <ul>
+          <li>Unlimited connected accounts</li>
+          <li>Custom AI models &amp; integrations</li>
+          <li>Dedicated account manager</li>
+          <li>SSO &amp; advanced security controls</li>
+          <li>SLA-backed support</li>
+        </ul>
+        <button type="button" class="btn btn-outline js-get-started" data-plan="Enterprise">Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to modernize your treasury?</h2>
+    <p>Join businesses using AI Treasury to manage cash smarter, faster, and with less manual work.</p>
+    <button type="button" class="btn btn-primary js-get-started">Get Started</button>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="logo">AI Treasury</div>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 AI Treasury. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-body" id="modalBody">
+      <h3 id="modalTitle">Get started with AI Treasury</h3>
+      <p>Tell us a bit about your business and we'll be in touch shortly.</p>
+      <form id="getStartedForm" novalidate>
+        <div class="form-field">
+          <label for="fieldName">Full name</label>
+          <input type="text" id="fieldName" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="fieldEmail">Work email</label>
+          <input type="email" id="fieldEmail" name="email" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="fieldCompany">Company</label>
+          <input type="text" id="fieldCompany" name="company" autocomplete="organization">
+        </div>
+        <div class="form-field">
+          <label for="fieldPlan">Plan you're interested in</label>
+          <select id="fieldPlan" name="plan">
+            <option value="Starter">Starter</option>
+            <option value="Growth" selected>Growth</option>
+            <option value="Enterprise">Enterprise</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="fieldMessage">Anything else? (optional)</label>
+          <textarea id="fieldMessage" name="message" rows="3"></textarea>
+        </div>
+        <p class="form-error" id="formError">Please enter your name and a valid work email.</p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="chat-launcher" id="chatLauncher" aria-label="Open chat">&#128172;</button>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-modal="false" aria-labelledby="chatTitle">
+  <div class="chat-header">
+    <div>
+      <h3 id="chatTitle">Ask AI Treasury</h3>
+      <p>Questions about plans, pricing, or setup?</p>
+    </div>
+    <button type="button" class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+  <div class="chat-input-row">
+    <textarea id="chatInput" rows="1" placeholder="Type your question…" aria-label="Type your question"></textarea>
+    <button type="button" class="chat-send" id="chatSend">Send</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var headerOffset = 76;
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    var id = link.getAttribute('href').slice(1);
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target) return;
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetY = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - headerOffset);
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      try {
+        history.pushState(null, '', '#' + id);
+      } catch (err) {
+        location.hash = id;
+      }
+    });
+  });
+})();
+
+(function () {
+  var overlay = document.getElementById('modalOverlay');
+  var modalBody = document.getElementById('modalBody');
+  var closeBtn = document.getElementById('modalClose');
+  var triggers = document.querySelectorAll('.js-get-started');
+  var defaultModalHTML = modalBody.innerHTML;
+  var SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwVafovHOJ7o0sjosDkx-Z8b2q-6jD7PPs3bTM7gBdLVRAzIXCy-dCvrtOUM89FDlEC/exec';
+
+  function recordSubmission(fields) {
+    fetch(SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new URLSearchParams(fields)
+    }).catch(function () {});
+  }
+
+  function attachFormHandler() {
+    var form = document.getElementById('getStartedForm');
+    var errorEl = document.getElementById('formError');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!name || !emailValid) {
+        errorEl.classList.add('show');
+        return;
+      }
+      errorEl.classList.remove('show');
+
+      recordSubmission({
+        name: name,
+        email: email,
+        company: form.company.value.trim(),
+        plan: form.plan.value,
+        message: form.message.value.trim()
+      });
+
+      var firstName = name.split(' ')[0];
+      modalBody.innerHTML =
+        '<div class="modal-success">' +
+        '<div class="success-icon">&#10003;</div>' +
+        '<h3>You\'re all set, ' + escapeHtml(firstName) + '!</h3>' +
+        '<p>Thanks for your interest in the ' + escapeHtml(form.plan.value) + ' plan. ' +
+        'We\'ve received your info and will reach out at ' + escapeHtml(email) + ' shortly.</p>' +
+        '<button type="button" class="btn btn-primary" id="modalDoneBtn">Done</button>' +
+        '</div>';
+
+      document.getElementById('modalDoneBtn').addEventListener('click', closeModal);
+    });
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function openModal(e) {
+    var plan = e.currentTarget.getAttribute('data-plan');
+    modalBody.innerHTML = defaultModalHTML;
+    if (plan) {
+      var select = document.getElementById('fieldPlan');
+      if (select) select.value = plan;
+    }
+    attachFormHandler();
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var firstField = document.getElementById('fieldName');
+    if (firstField) firstField.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(function (t) {
+    t.addEventListener('click', openModal);
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+})();
+
+(function () {
+  var launcher = document.getElementById('chatLauncher');
+  var panel = document.getElementById('chatPanel');
+  var closeBtn = document.getElementById('chatClose');
+  var messagesEl = document.getElementById('chatMessages');
+  var input = document.getElementById('chatInput');
+  var sendBtn = document.getElementById('chatSend');
+
+  var history = [];        // {role: 'user'|'assistant', content: string}
+  var greeted = false;
+  var sending = false;
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function scrollToBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addBubble(text, kind) {
+    var b = document.createElement('div');
+    b.className = 'chat-bubble ' + kind;
+    b.innerHTML = escapeHtml(text);
+    messagesEl.appendChild(b);
+    scrollToBottom();
+    return b;
+  }
+
+  function showTyping() {
+    var t = document.createElement('div');
+    t.className = 'chat-typing';
+    t.id = 'chatTyping';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(t);
+    scrollToBottom();
+  }
+
+  function hideTyping() {
+    var t = document.getElementById('chatTyping');
+    if (t) t.remove();
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    launcher.classList.add('hidden');
+    if (!greeted) {
+      addBubble("Hi! I'm AI Treasury's assistant. Ask me about our plans, pricing, refunds, or getting set up.", 'bot');
+      greeted = true;
+    }
+    input.focus();
+  }
+
+  function closeChat() {
+    panel.classList.remove('open');
+    launcher.classList.remove('hidden');
+  }
+
+  function autoGrow() {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+  }
+
+  function setSending(state) {
+    sending = state;
+    sendBtn.disabled = state;
+    input.disabled = state;
+  }
+
+  function send() {
+    if (sending) return;
+    var text = input.value.trim();
+    if (!text) return;
+
+    addBubble(text, 'user');
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    autoGrow();
+    setSending(true);
+    showTyping();
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history })
+    })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (data) {
+        hideTyping();
+        if (data && data.reply) {
+          addBubble(data.reply, 'bot');
+          history.push({ role: 'assistant', content: data.reply });
+        } else {
+          var msg = (data && data.error) ? data.error :
+            "Sorry, something went wrong. Please email support@aitreasury.com.";
+          addBubble(msg, 'error');
+          // Drop the unanswered user turn so the next request stays valid.
+          history.pop();
+        }
+      })
+      .catch(function () {
+        hideTyping();
+        addBubble("I couldn't reach the assistant. Please check your connection or email support@aitreasury.com.", 'error');
+        history.pop();
+      })
+      .then(function () {
+        setSending(false);
+        input.focus();
+      });
+  }
+
+  launcher.addEventListener('click', openChat);
+  closeBtn.addEventListener('click', closeChat);
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('input', autoGrow);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeChat();
+  });
+})();
+</script>
+
+</body>
+</html>
